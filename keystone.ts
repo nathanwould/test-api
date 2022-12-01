@@ -14,6 +14,8 @@ import { lists } from './schema';
 // when you write your list-level access control functions, as they typically rely on session data
 import { withAuth, session } from './auth';
 
+const databaseUrl = process.env.DATABASE_URL || 'postgres://admin:adminpassword@localhost/testapi';
+
 export default withAuth(
   config({
     db: {
@@ -21,7 +23,7 @@ export default withAuth(
       //   for more information on what database might be appropriate for you
       //   see https://keystonejs.com/docs/guides/choosing-a-database#title
       provider: 'postgresql',
-      url: 'postgres://admin:adminpassword@localhost/testapi',
+      url: databaseUrl,
     },
     lists,
     session,
